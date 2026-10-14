@@ -30,7 +30,7 @@ public class Main {
                 case 4: {
                     try {
                         System.out.println("\n Меню ");
-                        System.out.println("Выберете, воспользуемся старым резултатом или введем две новые матрицы");
+                        System.out.println("Выберете, воспользуемся старым результатом или введем две новые матрицы");
                         System.out.println("1. Старый дейстиве новый");
                         System.out.println("2. новый дейстиве старый ");
                         System.out.println("3. обе матрицы новые ");
@@ -41,14 +41,14 @@ public class Main {
                         Matrix B = null ;
                         if ( typee == 1 ){
                             if ( result == null ){
-                                throw new IllegalArgumentException("нет запомненного результат ");
+                                throw new IllegalArgumentException("нет запомненного результата ");
                             }
                             A = result ; 
                             B = readMatrix(sc, "B");
                         }
                         else if (  typee == 2 ) {
                             if ( result == null ){
-                                throw new IllegalArgumentException("нет запомненного результат ");
+                                throw new IllegalArgumentException("нет запомненного результата ");
                             }
                             A = readMatrix(sc, "A");
                             B = result ; 
@@ -90,7 +90,7 @@ public class Main {
                         
                         if ( typee == 1 ){
                             if ( result == null ){
-                                throw new IllegalArgumentException("нет запомненного результат ");
+                                throw new IllegalArgumentException("нет запомненного результата ");
                             }
                             A = result ;   
                         }
