@@ -1,9 +1,11 @@
 import java.util.Scanner;
 
 public class Main {
+    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean exit = false;
+        Matrix result = null;
 
         while (!exit) {
             System.out.println("\n Меню ");
@@ -14,6 +16,7 @@ public class Main {
             System.out.println("5. Определитель");
             System.out.println("6. Обратная");
             System.out.println("7. Транспонирование");
+            System.out.println("8. Вывести сохраненный результат");
             System.out.println("0. Выход");
             System.out.print("Ваш выбор: ");
 
@@ -26,10 +29,36 @@ public class Main {
                 case 3:
                 case 4: {
                     try {
-                        Matrix A = readMatrix(sc, "A");
-                        Matrix B = readMatrix(sc, "B");
+                        System.out.println("\n Меню ");
+                        System.out.println("Выберете, воспользуемся старым резултатом или введем две новые матрицы");
+                        System.out.println("1. Старый дейстиве новый");
+                        System.out.println("2. новый дейстиве старый ");
+                        System.out.println("3. обе матрицы новые ");
+                        int typee = sc.nextInt();
+                        sc.nextLine();
+                        
+                        Matrix A = null ;
+                        Matrix B = null ;
+                        if ( typee == 1 ){
+                            if ( result == null ){
+                                throw new IllegalArgumentException("нет запомненного результат ");
+                            }
+                            A = result ; 
+                            B = readMatrix(sc, "B");
+                        }
+                        else if (  typee == 2 ) {
+                            if ( result == null ){
+                                throw new IllegalArgumentException("нет запомненного результат ");
+                            }
+                            A = readMatrix(sc, "A");
+                            B = result ; 
+                        }
+                        else{
+                            A = readMatrix(sc, "A");
+                            B = readMatrix(sc, "B");
+                        }
 
-                        Matrix result = null;
+                        
                         if (choice == 1) result = A.plus(B);
                         if (choice == 2) result = A.minus(B);
                         if (choice == 3) result = A.multiply(B);
@@ -47,8 +76,26 @@ public class Main {
                 case 6:
                 case 7: {                    
                     try {
-                        Matrix A = readMatrix(sc, "A");
+                        Matrix A = null ;
 
+                        System.out.println("\n Меню ");
+                        System.out.println("Выберете, воспользуемся старым резултатом или введем новую матрицу");
+                        System.out.println("1. Старая");
+                        System.out.println("2. Новая ");
+                        int typee = sc.nextInt();
+                        sc.nextLine();
+                        
+                        if ( typee == 1 ){
+                            if ( result == null ){
+                                throw new IllegalArgumentException("нет запомненного результат ");
+                            }
+                            A = result ;   
+                        }
+                        else{
+                            A = readMatrix(sc, "A");
+                        }
+                        
+                        
                         if (choice == 5) {
                             System.out.println("det(A) = " + A.determinant());
                         }
@@ -66,6 +113,11 @@ public class Main {
                     }
                     break;
                 }
+                case 8: 
+                    if ( result == null ){
+                        System.out.println("Нет запомненного результата");
+                    }
+                    System.out.println(result);
 
                 case 0:
                     exit = true;
