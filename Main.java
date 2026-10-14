@@ -10,10 +10,10 @@ public class Main {
             System.out.println("1. Сложение");
             System.out.println("2. Вычитание");
             System.out.println("3. Умножение");
-            System.out.println("4. Транспонирование");
+            System.out.println("4. Деление");
             System.out.println("5. Определитель");
             System.out.println("6. Обратная");
-            System.out.println("7. Деление");
+            System.out.println("7. Транспонирование");
             System.out.println("0. Выход");
             System.out.print("Ваш выбор: ");
 
@@ -24,7 +24,7 @@ public class Main {
                 case 1:
                 case 2:
                 case 3:
-                case 7: {
+                case 4: {
                     try {
                         Matrix A = readMatrix(sc, "A");
                         Matrix B = readMatrix(sc, "B");
@@ -33,7 +33,7 @@ public class Main {
                         if (choice == 1) result = A.plus(B);
                         if (choice == 2) result = A.minus(B);
                         if (choice == 3) result = A.multiply(B);
-                        if (choice == 7) result = A.divide(B);
+                        if (choice == 4) result = A.divide(B);
                         System.out.println("результат:");
                         System.out.println(result);
                     } 
@@ -43,22 +43,22 @@ public class Main {
                     break;
                 }
 
-                case 4:
                 case 5:
-                case 6: {                    
+                case 6:
+                case 7: {                    
                     try {
                         Matrix A = readMatrix(sc, "A");
 
-                        if (choice == 4) {
-                            System.out.println("транспонированная:");
-                            System.out.println(A.transpose());
-                        }
                         if (choice == 5) {
                             System.out.println("det(A) = " + A.determinant());
                         }
                         if (choice == 6) {
                             System.out.println("обратная:");
                             System.out.println(A.inverse());
+                        }
+                        if (choice == 7) {
+                            System.out.println("транспонированная:");
+                            System.out.println(A.transpose());
                         }
                     } 
                     catch (IllegalArgumentException | ArithmeticException e) {
