@@ -12,6 +12,13 @@ public class Complex {
         this.mnim = mnim;
     }
 
+    public Complex(Complex x ) {
+        this.deistv = x.deistv;
+        this.mnim = x.mnim;
+    }
+
+
+    
     public void setdeistv(double deistv) {
         this.deistv = deistv;
     }
@@ -26,38 +33,32 @@ public class Complex {
         this.mnim = mnim;
     }
     
-    
-    public void minus(Complex a) {
-        this.deistv = this.deistv - a.deistv;
-        this.mnim = this.mnim - a.mnim;
+    public Complex minus(Complex a) {
+        return new Complex(this.deistv - a.deistv , this.mnim - a.mnim);
     }
 
-    public void plus(Complex a) {
-        this.deistv = this.deistv + a.deistv;
-        this.mnim = this.mnim + a.mnim;
+    public Complex plus(Complex a) {
+        return new Complex(this.deistv + a.deistv , this.mnim + a.mnim);
     }
     
-    public void multiply(Complex a) {
+    public Complex multiply(Complex a) {
         double new_deistv = this.deistv * a.deistv - this.mnim * a.mnim;
         double new_mnim = this.deistv * a.mnim + this.mnim * a.deistv;
 
-        this.deistv = new_deistv;
-        this.mnim = new_mnim;
+        return new Complex(new_deistv , new_mnim);
     }
     
     
-    public void divide(Complex a) {
+    public Complex divide(Complex a) {
         double znam = a.deistv * a.deistv + a.mnim * a.mnim;
         if (Math.abs(znam) < 1e-10) {
-            System.out.println("Деление на ноль");
-            return;
+            throw new ArithmeticException("Деление на 0");
         }
 
         double new_deistv = (this.deistv * a.deistv + this.mnim * a.mnim) / znam;
         double new_mnim = (this.mnim * a.deistv - this.deistv * a.mnim) / znam;
 
-        this.deistv = new_deistv;
-        this.mnim = new_mnim;
+        return new Complex( new_deistv ,new_mnim );
     }
 
     
