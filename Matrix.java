@@ -207,4 +207,47 @@ public class Matrix {
 
         return this.multiply(y.inverse());
     }
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < rows; i++) {
+            sb.append("[ ");
+            for (int j = 0; j < cols; j++) {
+                sb.append(data[i][j].toString());
+                if (j < cols - 1) sb.append(",\t");
+            }
+            sb.append(" ]");
+            if (i < rows - 1) sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Matrix)) return false;
+        Matrix other = (Matrix) obj;
+        if (this.rows != other.rows || this.cols != other.cols) return false;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (!this.data[i][j].equals(other.data[i][j])) return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + rows;
+        result = 31 * result + cols;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result = 31 * result + data[i][j].hashCode();
+            }
+        }
+        return result;
+    }
+
 }
