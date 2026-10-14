@@ -53,10 +53,13 @@ public class Main {
                             A = readMatrix(sc, "A");
                             B = result ; 
                         }
-                        else{
+                        else if ( typee == 3 ){
                             A = readMatrix(sc, "A");
                             B = readMatrix(sc, "B");
                         }
+                        else {
+                            throw new IllegalArgumentException("неверный выбор");
+                        } 
 
                         
                         if (choice == 1) result = A.plus(B);
@@ -91,21 +94,26 @@ public class Main {
                             }
                             A = result ;   
                         }
-                        else{
+                        else if ( typee == 2 ) {
                             A = readMatrix(sc, "A");
                         }
+                        else {
+                            throw new IllegalArgumentException("неверный выбор");
+                        }   
                         
                         
                         if (choice == 5) {
                             System.out.println("det(A) = " + A.determinant());
                         }
                         if (choice == 6) {
+                            result = A.inverse();
                             System.out.println("обратная:");
-                            System.out.println(A.inverse());
+                            System.out.println(result);
                         }
                         if (choice == 7) {
+                            result = A.transpose();     
                             System.out.println("транспонированная:");
-                            System.out.println(A.transpose());
+                            System.out.println(result);
                         }
                     } 
                     catch (IllegalArgumentException | ArithmeticException e) {
@@ -117,8 +125,10 @@ public class Main {
                     if ( result == null ){
                         System.out.println("Нет запомненного результата");
                     }
-                    System.out.println(result);
-
+                    else {
+                        System.out.println(result);
+                    }
+                    break ;
                 case 0:
                     exit = true;
                     System.out.println("Выход");
