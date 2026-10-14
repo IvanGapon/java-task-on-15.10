@@ -17,8 +17,6 @@ public class Complex {
         this.mnim = x.mnim;
     }
 
-
-    
     public void setdeistv(double deistv) {
         this.deistv = deistv;
     }
